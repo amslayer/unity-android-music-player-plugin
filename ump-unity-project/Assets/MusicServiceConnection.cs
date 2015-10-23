@@ -13,6 +13,8 @@ public class MusicServiceConnection : MonoBehaviour
 				EMPS_PAUSED
 		};
 
+		E_MUSIC_PLAYER_STATE m_PlayerState = E_MUSIC_PLAYER_STATE.EMPS_STOPPED;
+
 		public GameObject m_InitialScreen;
 		public GameObject m_PlayScreen;
 
@@ -22,13 +24,15 @@ public class MusicServiceConnection : MonoBehaviour
 		public GameObject m_PlayButtonText;
 		public GameObject m_CurrentTrackNameLabel;
 
+		bool m_PlayScreenActive = false;
+
+		// Variables used to communicate with the native plugin - Refer to official Unity documentation: http://docs.unity3d.com/Manual/PluginsForAndroid.html
 		AndroidJavaClass androidClass;
 		AndroidJavaObject androidActivity;
 
-		E_MUSIC_PLAYER_STATE m_PlayerState = E_MUSIC_PLAYER_STATE.EMPS_STOPPED;
-
+		//Variable to determine whether the Music Player service has started correctly
 		bool m_ServiceConnectionDone = false;
-		bool m_PlayScreenActive = false;
+		
 
 		void Awake ()
 		{

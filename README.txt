@@ -17,9 +17,11 @@ The repository has two projects in these folders:
 Description of Eclipse Project: 
  
 >> IMPORTANT: 'MusicPlayerActivity' overrides 'UnityPlayerActivity' - Depending upon your project, you may need to change the name of this class.
+>> Read the Tutorial [1] below in Reference to understand how the Android-side media player works. 
 >> External dependencies: You may need to compile them on your machine
 	RxJava: https://github.com/ReactiveX/RxJava
 	RxAndroid: https://github.com/ReactiveX/RxAndroid
+>> RxJava/RxAndroid have been used for asynchronous event processing on the Android-plugin side. 
 
 ----------------------------------------------------------------------------------------
 
@@ -28,14 +30,22 @@ Description of Unity Project:
 >> IMPORTANT: <Assets/Plugins/Android/AndroidManifest.xml> will have to be manually written to be correctly used in the project
 >> <Assets/Scene-1> is the main scene
 >> <Assets/MusicServiceConnection.cs> is the script which connects with the Android plugin and calls the relevant functions. 
+>> The music stops playing when the application is stopped, i.e., the home key is pressed. To keep the music playing even after the MusicPlayerActivity is stopped, add the following to the manifest
+	<activity
+					android:name="com.amslayer.musicplayer.MusicPlayerActivity"
+					android:process=":ToBeKilled" >
+	</activity>
+	<service> android:name="com.amslayer.musicplayer.MusicPlayerService"
+		android:process=":NotToBeKilled" > 
+	</service>
 
 ----------------------------------------------------------------------------------------
 
 Reference: 
-1. Tutorial to make a music player on Android: 
+[1] Tutorial to make a music player on Android: 
 	>> http://code.tutsplus.com/tutorials/create-a-music-player-on-android-user-controls--mobile-22787
 	This tutorial was used as the base for making the eclipse project. For further improving the plugin please study this tutorial and add functions to eclipse code.
-2. Resources about making a Unity plugin: 
+[2] Resources about making a Unity plugin: 
 	>> Creating An Android Java Plugin For Unity3D - https://blog.nraboy.com/2014/06/creating-an-android-java-plugin-for-unity3d/
 	>> Custom Resources in a Unity Android Project - http://www.twodee.org/blog/?p=4951
 	>> How to create a Native Android Plugin for Unity - http://www.lorenzonuvoletta.com/how-to-create-a-native-android-plugin-for-unity/
