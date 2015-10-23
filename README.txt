@@ -17,6 +17,9 @@ The repository has two projects in these folders:
 Description of Eclipse Project: 
  
 >> IMPORTANT: 'MusicPlayerActivity' overrides 'UnityPlayerActivity' - Depending upon your project, you may need to change the name of this class.
+>> External dependencies: You may need to compile them on your machine
+	RxJava: https://github.com/ReactiveX/RxJava
+	RxAndroid: https://github.com/ReactiveX/RxAndroid
 
 ----------------------------------------------------------------------------------------
 
